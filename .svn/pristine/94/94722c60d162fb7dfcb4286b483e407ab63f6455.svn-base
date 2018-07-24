@@ -1,0 +1,57 @@
+<!--pages/homes/setquota/setquota.wxml-->
+
+<view class="page">
+    <view class="page__bd page__bd_spacing">
+        <!--已选择指标  -->
+        <view class='item userQuotaCtn' id='userQuotaCtn'>
+            <view class='title c-blue2'>已选择指标</view>
+            <view class='slc-list'>
+                <view class='list {{item.illnessId ? "bc-green2": "bc-blue2"}}' wx:for="{{userQuota}}" wx:key="index">
+                    <text>{{item.showName}}</text>
+                    <image bindtouchstart='delQuota' data-quotaid="{{item.quotaId}}" data-illid="{{item.illnessId}}" data-index="{{index}}" class='img' src='../../../images/mark.png'></image>
+                </view>
+            </view>
+        </view>
+        <!--可选择指标  -->
+        <view style='margin-top:{{userQuotaCtnHeight}}px'>
+            <view class='item'>
+                <view class='item-title' bindtouchstart='showAllQuota'>
+                    <view>按指标单独监测</view>
+                    <image class='img' src='{{allQuotaShow ? "../../../images/icon_shouqi.png" : "../../../images/icon_zhanka.png"}}'></image>
+                </view>
+                <view class='all-quota-list' wx:if="{{allQuotaShow}}">
+                    <view class='list {{item.userSlt ? "active" : ""}}' wx:for="{{allQuota}}" wx:key="quotaId" bindtouchstart='changeSingleQuota' data-userslt="{{item.userSlt}}" data-index="{{index}}">{{item.name}}</view>
+                </view>
+            </view>
+            <view class='item' style='background-color: #F6F6F6;padding-bottom:76px;margin-bottom:0'>
+                <view class='item-title bc-white'>
+                    <view>按疾病统一监测</view>
+                </view>
+                <view class='ill-list bc-white' wx:for="{{allSystem}}" wx:key="id" wx:for-item="typeItem" wx:for-index="sysIndex" style='padding-bottom:0.1px;margin-bottom:10px'>
+                    <view class='ill-list-title' bindtap='showSys' data-id="{{typeItem.id}}" data-index="{{sysIndex}}">
+                        <view class='c-blue2 font-16'>{{typeItem.name}}</view>
+                        <image class='img' src='{{typeItem.sysShow ? "../../../images/icon_shouqi.png" : "../../../images/icon_zhanka.png"}}'></image>
+                    </view>
+                    <view class='ill-list-item weui-flex' wx:if="{{typeItem.sysShow}}" wx:for="{{typeItem.illnessList}}" wx:key="illIndex" wx:for-item="illnessItem" wx:for-index="illIndex">
+                        <view class="weui-flex__item">
+                            <view class='illname font-16'>{{illnessItem.illnessName}}</view>
+                            <view class='illquotaname font-12'>
+                                <text wx:for="{{illnessItem.quotaList}}" wx:for-item="quotaItem">{{quotaItem.name}}<text wx:if="{{index<illnessItem.quotaList.length-1}}">、</text></text>
+                            </view>
+                        </view>
+                        <view>
+                            <view class='switch'>
+                                <switch color='#22A7E8' bindchange="changeIllQuota" checked="{{illnessItem.slt}}" data-illindex="{{illIndex}}" data-sysindex="{{sysIndex}}" data-illid="{{illnessItem.illnessId}}" />
+                            </view>
+                        </view>
+                    </view>
+
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-footer weui-footer_fixed-bottom bc-white footer-btn">
+            <button class='weui-btn bc-blue c-white' bindtap='setQuota'>保存设置</button>
+        </view>
+    </view>
+</view>

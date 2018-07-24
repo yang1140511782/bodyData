@@ -1,0 +1,34 @@
+<!--pages/homes/user/user.wxml-->
+
+
+<view class="page">
+    <view class="page__bd">
+        <view style="height:203px;position:relative" class='text-center bc-white user-bc'>
+            <image class='user-bc' style='width:100%;height:100%' src='../../../images/user_pic_bg.jpg' mode='aspectFill'></image>
+            <view class='d-inline user-ctn text-center'>
+                <view style='width:80px;height:80px;margin:0 auto;border-radius:50%;overflow:hidden;border:2px solid #5AC5F1'>
+                    <image wx:if="{{headImg && headImg!=' ' && headImg!=null && headImg!='%20' && !item.headImgError}}" binderror="imageError" src="{{BASE_URL+headImg+'?server=image'}}" mode='aspectFill' style='width:100%;height:100%' />
+
+                    <image wx:if="{{!headImg || headImg==' ' || headImg==null || headImg=='%20' || item.headImgError}}" src="../../../images/userNoSex.png" mode='aspectFill' style='width:100%;height:100%' />
+                </view>
+                <view class='font-18 c-white'>{{userInfo.realName}}</view>
+                <view class='font-12 c-white'>关心堂-您最贴心的陪伴</view>
+            </view>
+        </view>
+
+        <view class="weui-cells">
+            <navigator url="../personalData/personalData" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">个人资料</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
+            </navigator>
+            <navigator url="../usercode/usercode" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">我的二维码</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
+            </navigator>
+            <view bindtouchstart='logout' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">退出登录</view>
+                <!-- <view class="weui-cell__ft weui-cell__ft_in-access"></view>  -->
+            </view>
+        </view>
+    </view>
+</view>

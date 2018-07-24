@@ -1,0 +1,170 @@
+<!--pages/download/download.wxml-->
+<view class="page">
+   <view class='header'>
+    <text class='headPortrait'>头像</text>
+    <!-- <image class="menu-item-arrow headImg" src="../../../images/userNoSex.png"></image> -->
+      <!-- <view class="infotext" bindtap="setPhotoInfo"> -->
+      <view class="infotext" >
+            <image wx:if="{{!headImgError}}" bindtap='setPhotoInfo' binderror="imageError" class="userinfo-avatar headImg1" src="{{baseUrl + userInfo.headImageUrl + imgServer}}" background-size="cover"></image>
+			<image wx:if="{{headImgError}}" bindtap='setPhotoInfo' class="userinfo-avatar headImg1" src="../../../images/userNoSex.png" background-size="cover"></image>
+            <!-- <image wx:else class="userinfo-avatar headImg" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+            <image wx:if="{{imgUrl==null}}" class="menu-item-arrow headImg" src="../../../images/userNoSex.png"></image> -->
+             <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view>
+      </view> 
+    </view>
+  <!-- <view class="info-items" bindtap="setPhotoInfo">
+      <text>头像</text>
+      <view class="infotext">
+          <image wx:if="{{imgUrl!=null}}" class="userinfo-avatar" src="{{imgUrl}}" background-size="cover"></image>
+          <image wx:else class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          <image class="menu-item-arrow" src="/image/arrowright.png"></image>
+      </view>
+  </view> -->
+
+  <view class='name'>
+    <text class='nameText'>真实姓名*</text>
+    <input bindblur='bindName' class='nameInput' placeholder="请输入真实姓名" value='{{userInfo.realName}}'/>
+  </view>
+
+  <view class='currency'>
+    <text class='currencyText'>身份证号*</text>
+    <input bindblur="verification" type='idcard' class='currencyInput' placeholder="请输入身份证号码" value='{{userInfo.idCard}}'/>
+     <view class='remind'>{{result}}</view> 
+     <!-- <view>输入结果：{{result}}</view> -->
+  </view>
+
+  <view class='interval'></view>
+
+  <view class='currency'>
+     <picker class='currencyText' value="{{picker1Value}}" range="{{pickerRange}}" bindchange="pickerRangePickerBindchange">
+    性别<input class='currencyInput' type="text" disabled="disabled" placeholder="请选择性别" value="{{userInfo.gender}}"/> 
+    </picker> 
+     <!-- <text class='Symbol'>></text>  -->
+      <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view>  
+  </view>
+  <!-- <view><image class='next' src='../../../images/xiayiye.png'></image></view> -->
+  <view class='currency'>
+     <picker class='currencyText' mode="date" value="{{dateValue}}" start="1900-01-01" end="{{dateValueEnd}}" bindchange="datePickerBindchange">
+    出生日期<input bindtap="dateValueEnd" class='currencyInput' type="text" disabled="disabled" placeholder="请选择出生日期" value="{{userInfo.birthday}}"/> 
+    </picker> 
+   <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view>
+  </view>
+
+  <view class='currency'>
+     <picker class='currencyText'mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    选择地区<input class='currencyInput' type="text" disabled="disabled" placeholder="请选择地区" value="{{userInfo.area}}"/> 
+    </picker> 
+    <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view>
+  </view>
+
+  <view class='currency'>
+    <text class='currencyText'>详细地址</text>
+    <input bindblur='bindAddress' class='currencyInput' placeholder="街道门牌信息" value='{{userInfo.address}}'/>
+  </view>
+
+  <view class='currency'>
+    <text class='currencyText'>紧急联系人</text>
+    <input bindblur='bindContact' class='currencyInput' placeholder="请输入紧急联系人姓名" value='{{userInfo.guardian}}'/>
+  </view>
+
+  <view class='currency'>
+    <text class='currencyText'>联系人电话</text>
+    <input bindblur='bindContactPhone' type='number' class='currencyInput' placeholder="请输入紧急联系人电话" value='{{userInfo.guardianLinkphone}}'/>
+  </view>
+
+  <view class='currency' bindtap="jumpDoc" wx:if="{{userInfo.recommendDoc == ''}}">
+    <text class='currencyText'>推荐医生</text>
+    <input class='currencyInput' placeholder="请选择推荐医生" type="text" disabled="disabled"/>
+    <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view>
+  </view>
+
+  <view class='currency' wx:else>
+    <text class='currencyText'>推荐医生</text>
+    <input class='currencyInput' placeholder="请选择推荐医生" type="text" disabled="disabled" value='{{userInfo.recommendDoc}}'/>
+     <!-- <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view>  -->
+  </view>
+
+  <view class='interval'></view>
+
+  <!-- <view class='currency'>
+     <pick change="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    体重<input class='currencyInput' type="text" disabled="disabled" placeholder="请选择体重" value="{{multiArray[0][multiIndex[0]]}}{{multiArray[1][multiIndex[1]]}}"/> 
+    </picker> 
+    <text class='Symbol'>></text>
+  </view> -->
+
+  <!-- <view class='currency'>
+     <picker class='currencyText' value="{{picker3Value}}" range="{{smoke}}" bindchange="smokePickerBindchange">
+    吸烟史<input class='currencyInput' type="text" disabled="disabled" placeholder="请选择吸烟史" value="{{smoke[picker3Value]}}"/> 
+    </picker> 
+    <text class='Symbol'>></text>
+  </view> -->
+
+  <view class='currency'>
+     <picker class='currencyText' mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    体重 <text class='currencyInput {{!userInfo.weight ? "c-nodata":""}}'>{{userInfo.weight || '请选择体重'}}{{userInfo.weight?'kg':''}}</text>
+    </picker> 
+    <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view>
+  </view>
+
+  <view class='currency'>
+     <picker class='currencyText' mode="multiSelector" bindchange="bindMultiPickerChange1" bindcolumnchange="bindMultiPickerColumnChange1" value="{{multiIndex1}}" range="{{multiArray1}}">
+    <!-- 身高<input class='currencyInput' type="text" disabled="disabled" placeholder="请选择体重" value="{{userInfo.height}}"/>  -->
+	身高 <text class='currencyInput {{!userInfo.height ? "c-nodata":""}}'>{{userInfo.height || '请选择身高'}}{{userInfo.height?'cm':''}}</text>
+    </picker> 
+    <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view>
+  </view>
+
+  <view class='currency'>
+     <picker class='currencyText' mode="multiSelector" bindchange="bindMultiPickerChange2" bindcolumnchange="bindMultiPickerColumnChange2" value="{{multiIndex2}}" range="{{multiArray2}}">
+    <!-- 腰围<input class='currencyInput' type="text" disabled="disabled" placeholder="请选择体重" value="{{userInfo.waistline}}"/>  -->
+	腰围 <text class='currencyInput {{!userInfo.waistline ? "c-nodata":""}}'>{{userInfo.waistline || '请选择腰围'}}{{userInfo.waistline?'cm':''}}</text>
+    </picker> 
+    <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view>
+  </view>
+
+  <!-- <view class='currency' bindtap="jumpIllness" > -->
+     <view class='currency' bindtouchstart='toIllness'>
+    <text class='currencyText'>已患疾病</text>
+    <input class='currencyInput' placeholder="请选择已患疾病" type="text" disabled="disabled" value='{{userInfo.haveIllnessName}}'/>
+     <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view> 
+  </view>
+
+  <!-- <view class="section">
+    <view class="section__title">体重</view>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="picker">
+        当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+      </view>
+    </picker>
+  </view> -->
+
+  <view class='interval'></view>
+
+  <view class='currency'>
+     <picker class='currencyText' value="{{picker3Value}}" range="{{smoke}}" bindchange="smokePickerBindchange">
+    吸烟史<input class='currencyInput' type="text" disabled="disabled" placeholder="请选择吸烟史" value="{{userInfo.smoke}}"/> 
+    </picker> 
+    <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view>
+  </view>
+
+  <view class='currency'>
+     <picker class='currencyText' value="{{picker4Value}}" range="{{acohol}}" 
+     bindchange="acoholPickerBindchange">
+    饮酒史<input class='currencyInput' type="text" disabled="disabled" placeholder="请选择饮酒史" value="{{userInfo.acohol}}"/> 
+    </picker> 
+    <view class='nextBox'><image class='next' src='../../../images/xiayiye.png'></image></view>
+  </view>
+
+  <view class="textareaCss">
+    <text class='historyBox'>过敏史</text>
+    <textarea class='historyTxt'  bindblur='bindAllergyHistory' placeholder="请输入过敏史" placeholder-class="placeholder"  value='{{userInfo.allergyHistory}}'/>
+  </view>
+
+   <view class="textareaCss">
+    <text class='historyBox'>手术史</text>
+    <textarea class='historyTxt' bindblur='bindSurgeryHistory' placeholder-class="placeholder" placeholder="请输入手术史" value='{{userInfo.surgeryHistory}}' />
+  </view>
+
+
+</view>

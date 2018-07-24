@@ -1,0 +1,49 @@
+{
+    "pages": [
+		"pages/homes/home/home",
+        "pages/homes/showdata/showdata",
+        
+        "pages/homes/adddata/adddata",
+        "pages/homes/setquota/setquota",
+        "pages/reg/reg",
+        "pages/login/login",
+        "pages/search/search",
+        "pages/index/index",
+        "pages/homes/user/user",
+        "pages/homes/usercode/usercode",
+        "pages/homes/personalData/personalData",
+		    "pages/homes/illness/illness",
+        "pages/download/download",
+        "pages/agreement/agreement",
+        "pages/downloadview/downloadview",
+
+		"pages/homes/personalData/cropper/cropper"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#000",
+        "navigationBarTitleText": "关心堂",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "selectedColor": "#22A7E8",
+        "list": [
+            {
+                "iconPath": "images/navbar_1_normal@3x.png",
+                "selectedIconPath": "images/navbar_1_choosed@3x.png",
+                "pagePath": "pages/homes/home/home",
+                "text": "首页"
+            },
+            {
+                "iconPath": "images/navbar_2_normal@3x.png",
+                "selectedIconPath": "images/navbar_2_choosed@3x.png",
+                "pagePath": "pages/homes/user/user",
+                "text": "我的"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 60000,
+        "downloadFile": 3000
+    }
+}

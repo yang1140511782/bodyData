@@ -1,0 +1,44 @@
+/* pages/homes/illness/illness.wxss */
+
+.padding-left-10{
+	padding-left: 10px;
+}
+
+/*背景色  */
+.bc-blue2{
+    background-color: #A9E3FD;
+}
+
+.list{
+    position: relative;
+    display: inline-block;
+    padding: 7px;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.list .img{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 25px;
+    height:20px;
+}
+
+.border-none{
+	border:none;
+}
+
+.footer-btn {
+    padding: 10px 20px;
+    bottom: 0;
+}
+
+.illCtn{
+	position: fixed;
+	top:0;
+	z-index: 10;
+	width: 100%;
+	border-bottom: 10px solid #F6F6F6;
+}

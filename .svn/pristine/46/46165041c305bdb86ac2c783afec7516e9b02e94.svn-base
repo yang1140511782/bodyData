@@ -1,0 +1,9 @@
+<!--component/userhead/userhead.wxml-->
+
+<template name='userhead'>
+    <view>
+        <image wx:if="{{headImg && headImg!=' ' && headImg!=null && headImg!='%20' && !item.headImgError}}" binderror="imageError" src="{{baseUrl+headImg+'?server=image'}}" />
+
+        <image wx:if="{{!headImg || headImg==' ' || headImg==null || headImg=='%20' || item.headImgError}}" src="../../images/userNoSex.png" />
+    </view>
+</template>

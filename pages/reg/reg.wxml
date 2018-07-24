@@ -1,0 +1,62 @@
+<!--pages/reg/reg.wxml-->
+
+<view class='page'>
+    <view class='page_bd'>
+        <view class="weui-cells__title">你还没有注册过关心堂，请先完成注册</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">登录密码</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" type='password' bindinput='bindPwdInput' placeholder="请设置您的登录密码"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">真实姓名</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" bindinput='bindNameInput' placeholder="请输入您的真实姓名"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">性别</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker value="{{index}}" bindchange="changeSex" start="2015-09-01" end="2017-09-01" range="{{sexArray}}">
+                        <view class="weui-input {{userInfo.sex?'':'c-nodata'}}">{{userInfo.sex || '请选择您的性别'}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">出生日期</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker mode="date" value="{{date}}" start="1918-01-01" end="{{today}}" bindchange="changeBirthday">
+                        <view class="weui-input {{userInfo.birthday?'':'c-nodata'}}">{{userInfo.birthday || '请选择您的出生日期'}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-cells">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">推荐医生</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <view class="weui-select weui-select_in-select-after border-right-none {{userInfo.docName?'':'c-nodata'}}" bindtap='selectDoc'>{{userInfo.docName || '如无可不选'}}</view>
+                </view>
+            </view>
+        </view> 
+
+        <view class="weui-btn-area">
+            <button class="weui-btn bc-blue c-white" bindtap="setRegInfo">完成注册</button>
+        </view>
+    </view>
+</view>

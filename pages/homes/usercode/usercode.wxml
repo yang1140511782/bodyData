@@ -1,0 +1,32 @@
+<!--pages/homes/usercode/usercode.wxml-->
+<!--用户二维码  -->
+
+<view class="page">
+    <view class="page__bd text-center">
+        <view class='code-ctn text-center margin-lr-auto' style='width:250px;'>
+            <view class='margin-bottom-10 text-left v-middle'>
+                <view class='d-inline user-photo v-middle' style='width:60px;height:60px;'>
+                    <image wx:if="{{headImg && headImg!=' ' && headImg!=null && headImg!='%20' && !item.headImgError}}" binderror="imageError" src="{{baseUrl+headImg+imgServer}}" mode='aspectFill' style='width:100%;height:100%' />
+
+                    <image wx:if="{{!headImg || headImg==' ' || headImg==null || headImg=='%20' || item.headImgError}}" src="../../../images/userNoSex.png" mode='aspectFill' style='width:100%;height:100%' />
+                </view>
+
+                <view class='d-inline v-middle'>
+                    <view style='font-size:18px'>{{userInfo.realName}}</view>
+                    <view class='font-14'>关心堂，从不止于关心</view>
+                </view>
+            </view>
+            <canvas hidden="{{canvasHidden}}" style="width: 250px;height: 250px;background:#f1f1f1;" canvas-id="mycanvas" />
+            <!-- <image src="{{imagePath}}" style='width:250px;height:250px'></image> -->
+            <!-- <image src='../../../images/logo.png' style='width:200px;height:200px'></image> -->
+            <view class='font-12 c-grey' style='margin-top:5px'>使用关心堂APP,</view>
+            <view class='font-12 c-grey'>扫一扫上面的二维码图案，添加我吧</view>
+        </view>
+        <button class="weui-btn bc-blue c-white margin-lr-1" open-type="share">分享</button>
+
+        <view class="canvas-box" style='display:none'>
+            <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas" />
+        </view>
+
+    </view>
+</view>

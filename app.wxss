@@ -1,0 +1,175 @@
+/**app.wxss**/
+@import 'style/weui.wxss';
+/*引入首页、我的图标  */
+@import 'fonts/icon/icon.wxss';
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+/*全局样式文件
+主色：#22A7E8
+*/
+
+page{
+     min-height: 100%; 
+     background-color: #EEEDF2;  
+}
+
+  /*字体颜色  */
+.c-blue{
+    color:#22A7E8
+}
+.c-white{
+    color: #fff
+}
+.c-grey{
+    color: #999999
+}
+.c-red{
+    color:#F19582
+}
+.c-nodata{
+    color:#808080
+}
+
+/*背景色  */
+.bc-blue{
+    background-color: #22A7E8;
+}
+.bc-white{
+    background-color: #fff;
+}
+.bc-grey{
+    background-color: #F6F6F6;
+}
+
+/*字体大小  */
+
+.font-12{
+    font-size: 12px
+}
+
+.font-14{
+    font-size: 14px
+}
+
+.font-16{
+    font-size: 16px
+}
+
+.font-18{
+	font-size: 18pt
+}
+/*文字排列  */
+.text-center{
+    text-align: center
+}
+.text-left{
+    text-align: left
+}
+.v-middle{
+    vertical-align: middle
+}
+.over-elips{
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+}
+
+/*边框  */
+.border-right-none{
+    border-right:none
+}
+.border-bottom-none{
+    border-bottom: none;
+}
+.border-bottom-grey{
+	border-bottom: 1px solid #EEEDF2;
+}
+.border-grey{
+	border:1px solid #EEEDF2
+}
+
+/*外间距  */
+.margin-bottom-10{
+    margin-bottom: 10px
+}
+.margin-bottom-15{
+    margin-bottom: 15px;
+}
+.margin-bottom-20{
+    margin-bottom: 20px
+}
+.margin-right-20{
+    margin-right: 20px;
+}
+.margin-top-10{
+    margin-top: 10px;
+}
+.margin-top-20{
+    margin-top: 20px;
+}
+.margin-top-0{
+    margin-top: 0;
+}
+.margin-lr-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.margin-lr-1{
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+
+
+/*内间距  */
+.padding-20{
+    padding:20px;
+}
+.padding-10{
+    padding:10px;
+}
+.padding-top-20{
+    padding-top: 20px;
+}
+
+.padding-bt-15{
+    padding-bottom: 15px
+}
+
+.padding-bottom-20{
+    padding-bottom: 20px
+}
+.padding-lr-1{
+    padding-left: 1em!important;
+    padding-right: 1em!important
+}
+
+/*宽高  */
+.width-100{
+    width: 100%
+}
+
+.height-100{
+    height: 100%
+}
+
+
+/*display  */
+.d-inline{
+    display: inline-block
+}
+
+/*float  */
+.f-right{
+	float: right
+}

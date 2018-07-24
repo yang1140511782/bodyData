@@ -1,0 +1,2 @@
+<!--pages/downloadview/downloadview.wxml-->
+<web-view src="https://cluster.cardiochina.net//resources/app/20180302/1519975903455_45353.apk?server=app"></web-view>

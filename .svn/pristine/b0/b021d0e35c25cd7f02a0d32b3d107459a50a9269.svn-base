@@ -1,0 +1,50 @@
+<!--pages/homes/home/home.wxml-->
+
+<view class="page">
+    <view class='page_bd'>
+        <navigator url='../adddata/adddata' class='width-100 text-center padding-top-30 bc-white padding-bottom-30'>
+            <image class=''  src='../../../images/add_sj_btn.png' mode='aspectFill' style='width:65pt;height:65pt'></image>
+            <view class='font-16'>录入新数据</view>
+        </navigator>
+
+        <navigator url="../showdata/showdata" class="weui-cells" hover-class="weui-cell_active">
+            <view class='my-cell'>
+                <view  class="weui-cell weui-cell_access" >
+                    <view class="weui-cell__bd">我的健康动态</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
+                </view>
+            </view>
+        </navigator>
+
+        <view class='data-list bc-white margin-bottom-10'>
+             <navigator url="{{'../showdata/showdata?quotaId='+(item.quotaId || 0)}}" wx:for="{{lastDatas}}" wx:key="quotaId" class="weui-form-preview">
+                <view class="weui-form-preview__bd">
+                    <view class="weui-form-preview__item">
+                        <!-- <view class="weui-form-preview__label">
+                            <text class='quota-name'>{{item.quotaName}} </text>
+                            <text class='quota-unit'> {{item.units}}</text>
+                        </view>  -->
+                        <view class="weui-form-preview__label quota-name">{{item.quotaName}} </view>
+                        <view class="weui-form-preview__value over-elips lineHeight-33 font-18">{{item.values}}</view>
+                    </view>
+                    <view class="weui-form-preview__item">
+                        <view class="weui-form-preview__label quota-item-name">({{item.names}})</view>
+                        <view class="weui-form-preview__value quota-value-time">{{item.checkTime}}</view>
+                    </view>
+                </view>
+            </navigator> 
+
+            <view wx:if='{{lastDatas.length<=0}}' class='font-14 c-grey text-center'>暂无动态</view>
+        </view>
+        
+        <view class='padding-lr-1 margin-bottom-15'>
+            <button class="weui-btn bc-blue c-white" bindtouchstart='toShowData'>查看全部健康记录</button>
+            <button class="weui-btn bc-white margin-top-10" bindtouchstart='toSetQuota'>设置需记录的指标</button>
+        </view>
+
+        <view class="weui-footer padding-bt-15">
+            <view class="weui-footer__text weui-footer__links font-14">更多服务请您下载使用 <text class='c-blue' bindtap='toDownload'>关心堂App</text></view>
+        </view> 
+        
+    </view>
+</view>

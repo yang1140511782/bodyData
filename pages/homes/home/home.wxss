@@ -1,0 +1,89 @@
+/* pages/homes/home/home.wxss */
+
+page{
+     background-color: #F6F6F6;  
+}
+
+.padding-top-30{
+    padding-top: 30px;
+}
+
+.padding-bottom-30{
+    padding-bottom: 30px;
+}
+
+.weui-cells:before{
+    border-top:none;
+}
+
+.my-cell{
+    padding-left: 0;
+    text-indent: 15px;
+    padding:10px 0;
+    padding-right: 15px;
+}
+.my-cell>.weui-cell{
+    width: 100%;
+    border-left: 2px solid #22A7E8;
+    padding-left: 0;
+    padding-top:0;
+    padding-bottom: 0;
+    text-indent: 15px;
+    line-height:15px;
+}
+
+.weui-form-preview:before{
+    border-top: none
+}
+
+.data-list{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.data-list .weui-form-preview{
+    border-radius: 5px;
+    margin: 0 10px 10px 10px;
+}
+.data-list .weui-form-preview:after{
+    border-bottom: none;
+}
+
+.data-list .quota-unit,.data-list .quota-item-name,.data-list .quota-value-time{
+    font-size: 12px
+}
+
+.data-list .weui-form-preview__label{
+    color: white
+}
+.data-list .weui-form-preview__value{
+    color: white;
+}
+
+.data-list .weui-form-preview:first-child{
+    background-color: #18B5A6;
+}
+
+.data-list .weui-form-preview:nth-child(2){
+    background-color: #22A7E8;
+}
+
+.data-list .weui-form-preview:nth-child(3){
+    background-color: #18BD74;
+}
+.data-list .weui-form-preview:last-child{
+    margin-bottom: 0;
+}
+
+button::after{
+    width: 199.5%
+}
+
+.weui-form-preview__label{
+    min-width: 1em;
+    text-align: left
+}
+
+.lineHeight-33{
+	line-height: 33px
+}

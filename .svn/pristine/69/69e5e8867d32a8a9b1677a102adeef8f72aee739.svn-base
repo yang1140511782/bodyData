@@ -1,0 +1,106 @@
+<!--pages/homes/showdata/showdata.wxml-->
+
+<view class="page bc-white" style='height:{{wx.getSystemInfoSync().windowHeight}}px'>
+
+    <scroll-view scroll-x style='width:100%;white-space:nowrap;padding-0;' bindscroll="scroll" scroll-into-view="{{'quota' + showQuotaId}}" scroll-top="{{scrollTop}}" class='bc-white scroll-ctn'>
+        <text id='quota0' bindtap='changeShowQuota' data-quotaid="0" class="scroll-item font-16 border-bottom-grey {{showQuotaId==0 ? 'active':''}}">运动</text>
+        <text wx:for="{{userQuota}}" wx:key="item.quotaId" id="{{'quota'+item.quotaId}}" bindtap='changeShowQuota' data-quotaid="{{item.quotaId}}" class="scroll-item font-16 border-bottom-grey {{showQuotaId==item.quotaId ? 'active':''}}">{{item.quotaName}}</text>
+    </scroll-view>
+    <view class='page_bd'>
+
+        <!--身体数据展示  -->
+        <view style='padding-bottom:4rem' wx:if="{{showQuotaId && showQuotaId!=0}}">
+
+            <!--有数据展示  -->
+            <view wx:if="{{!noData}}" class='padding-bottom-20'>
+                <view class="weui-form-preview margin-bottom-10 padding-10 ">
+                    <view class="weui-form-preview__bd preview-bd c-white {{backgroundColor[sltData.normal]}}">
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label c-white text-left">{{dataStatus[sltData.normal]}}</view>
+                        </view>
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label c-white lineHeight-33 font-18">{{sltData.value}}</view>
+                        </view>
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label c-white">{{sltData.names}}</view>
+                            <view class="weui-form-preview__value c-white" style='line-height:33px'>{{sltData.checktime}}</view>
+                        </view>
+                    </view>
+                </view>
+
+                <view class='bc-white' style='border-bottom: 10px solid #F6F6F6;'>
+                    <canvas canvas-id="dataCanvas" class="canvas" style='height:{{dataChartHeight}}px'  bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+                </view>
+
+                <view class="flex-column bc-white">
+                    <view class="flex-cell flex-row lineHeight-33">
+                        <text class="flex-cell flex-row font-12">测量时间</text>
+                        <text class="flex-cell flex-row font-12" wx:for="{{quotaConfig}}" wx:key="id" wx:for-item="configItem">{{configItem.name}}</text>
+                    </view>
+                    <view class="flex-row flex-cell {{index%2==0 ? 'bc-grey': ''}} lineHeight-33" wx:for="{{tableData}}" wx:for-item="timeItem" wx:index="index">
+                        <view class="flex-cell flex-row font-12 d-inline" style='min-width: 70px;'>
+                            <!-- <image src='../../../images/icon_shoudong.png' style='width:9px;height:9px;margin-right:2px'></image> -->
+                            <text style='margin-right:2px'>{{timeItem.day}} </text>
+                            <text class='c-grey'>{{timeItem.time}}</text>
+                        </view>
+                        <text class="flex-cell flex-row font-12 {{pointItem.value>pointItem.relLineMax || pointItem.value<pointItem.relLineMin ? 'c-red' : ''}}" wx:for="{{timeItem.data}}" wx:for-item="pointItem">{{pointItem.value}}</text>
+                    </view>
+                </view>
+                <view class='border-bottom-grey'></view>
+                <view class='font-12 text-center lineHeight-33 bc-white'>
+                    <text class='c-grey'>查看全部数据，请下载使用</text>
+                    <text class='c-blue' bindtouchstart='toDownLoad'>关心堂App</text>
+                </view>
+            </view>
+
+            <view wx:if="{{!noData}}" class="weui-footer weui-footer_fixed-bottom bc-white footer-btn">
+                <button class='weui-btn bc-blue c-white' bindtouchstart='toAddData'>记录新数据</button>
+            </view>
+
+            <!--无数据展示 -->
+            <view class='text-center' wx:if="{{noData}}">
+                <image src='../../../images/jksj_icon_tj.png' mode="aspectFit" style='margin:100px auto auto auto;width:130px;' bindtouchstart='toAddData'></image>
+            </view>
+        </view>
+
+        <!--运动数据展示  -->
+        <view class='text-center bc-white' style='height:100%' wx:if="{{!showQuotaId || showQuotaId==0}}">
+
+            <view style='positon:relative;height:208px'>
+
+                <canvas class="d-inline margin-top-20 margin-top-20" disable-scroll="true" style="width:180px; height:180px;transform:rotate(-90deg);" canvas-id="canvasArc"></canvas>
+                <view class="circle-ctn">
+                    <view class='c-grey font-12'>今日运动步数</view>
+                    <view class="page-c-blue" style='font-size:27pt;line-height:44px'>{{currentStepCount}}</view>
+                    <picker bindchange="setTarget" value="index" range="{{sportArray}}">
+                        <view class='font-12 page-c-blue border-grey d-inline v-middle' style='border-radius:15px;padding: 2px 10px'>
+                            <text class='v-middle'>目标 </text>
+                            <text class='v-middle'>{{sportSet}} </text>
+                            <image class='v-middle d-inline' src='../../../images/bianji.png' style='width:13px;height:13px'></image>
+                        </view>
+                    </picker>
+
+                </view>
+            </view>
+
+            <view style='position:relative' class='margin-top-10 padding-bt-15 border-bottom-grey'>
+                <view class='d-inline' style='width:50%'>
+                    <view>{{distance}}m</view>
+                    <view class='c-grey font-12'>运动距离</view>
+                </view>
+                <view class='d-inline line'></view>
+                <view class='d-inline' style='width:50%'>
+                    <view>{{cariello}}焦</view>
+                    <view class='c-grey font-12'>燃烧卡路里</view>
+                </view>
+            </view>
+
+            <view class='bc-white'>
+                <canvas canvas-id="sportCanvas" class="canvas" bindtouchstart="sportTouchHandler" bindtouchmove="sportMoveHandler" bindtouchend="sportTouchEndHandler" style='height:{{sportChartHeight}}px'></canvas>
+            </view>
+
+        </view>
+    </view>
+
+
+</view>

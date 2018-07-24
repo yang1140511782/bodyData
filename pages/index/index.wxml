@@ -1,0 +1,22 @@
+<!--pages/index/index.wxml-->
+
+<view class="page">
+    <view class="page__bd">
+        <image src='../../images/default.png' mode='aspectFill' style='height:145px;width:100%'></image>
+        <view class="padding-20 text-center">
+            <!-- <button class="weui-btn margin-bottom-20" type="primary" bindtouchstart="fastLogin">微信手机号快速登录</button>   -->
+			 <button class="weui-btn margin-bottom-20" type="primary" open-type='getPhoneNumber' bindgetphonenumber="fastLogin">微信手机号快速登录</button>  
+            <navigator class="c-blue font-16" url="../login/login">输入手机号码登录/注册</navigator> 
+        </view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        
+        <view class="weui-footer weui-footer_fixed-bottom">
+            <view class="weui-footer__text font-12">温馨提示</view>
+            <view class="weui-footer__text font-12">如果你想用您微信绑定的手机号码使用关心堂,</view>
+            <view class="weui-footer__text font-12 margin-bottom-20">请点击“微信手机号快速登录”</view>
+
+            <navigator url='../agreement/agreement' class="weui-footer__text weui-footer__links font-14">点击登录表示已阅读并同意<text class='c-blue'>《关心堂服务协议》</text></navigator>
+        </view>
+    </view>
+</view>

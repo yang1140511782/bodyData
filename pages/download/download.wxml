@@ -1,0 +1,13 @@
+<!--pages/download/download.wxml-->
+
+<view class="page">
+    <view class="page__bd">
+        <image src='../../images/default.png' style='height:110pt' mode='aspectFill' class='width-100'></image>
+        <view class="padding-20 text-center">
+            <button class="weui-btn margin-bottom-20 bc-blue c-white" bindtouchstart='toDownLoad'>下载关心堂用户版</button>
+            <image src='../../images/manbingCode.png' mode='aspectFill' style='width:160px;height:160px'></image>
+            <view class='font-14 c-grey'>识别二维码，关注关心堂健康管理中心公众号</view>
+        </view>
+    </view>
+</view>
+

@@ -1,0 +1,138 @@
+/* pages/homes/setquota/setquota.wxss */
+
+
+page{
+     background-color: #F6F6F6;  
+}
+
+/*
+蓝颜色：A9E3FD，
+绿颜色：C6F0ED
+  */
+
+/*字体颜色  */
+.c-blue2{
+    color: #58BCEE
+}
+
+/*背景色  */
+.bc-blue2{
+    background-color: #A9E3FD;
+}
+
+.bc-green2{
+    background-color: #C6F0ED;
+}
+
+.text-indent-10{
+    text-indent: 10px;
+}
+
+.item{
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.footer-btn{
+    padding: 10px 20px;
+    bottom: 0;
+}
+
+/*已选中的指标列表  */
+.title{
+    padding-left: 10px;
+    padding-top: 8px;
+}
+.slc-list{
+    padding:5px;
+}
+.list{
+    position: relative;
+    display: inline-block;
+    padding: 7px;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.slc-list .img{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 25px;
+    height:20px;
+}
+
+/*列表头  */
+.item-title{
+    padding: 10px 10px 10px 0;
+    border-bottom: 1px solid #F4F4F4;
+}
+.item-title>view{
+    border-left: 2px solid #22A7E8;
+    line-height: 15px;
+    font-size: 14px;
+    text-indent: 10px;
+}
+.item-title .img, .ill-list-title .img{
+    width: 23px;
+    height:23px;
+    float:right;
+    margin-top: -19px;
+}
+
+/*全部指标  */
+.all-quota-list{
+    padding: 5px;
+}
+.all-quota-list .list,.ill-list-item{
+    background-color: #F6F6F6
+}
+.all-quota-list .list.active{
+    background-color: #A9E3FD;
+}
+
+/*疾病指标  */
+.ill-list{
+    padding: 0 10px;
+    padding-bottom: 10px;
+}
+.ill-list-title{
+    line-height: 40px;
+}
+.ill-list-title .img{
+    margin-top: -30px;
+}
+.ill-list-item{
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.ill-list-item.active{
+    background-color:  #C6F0ED;
+}
+.ill-list-item .illname{
+    line-height: 100%;
+    margin-bottom: 10px;
+}
+.ill-list-item .switch{
+    position: relative;
+    display: inline-block;
+    width: 57px;
+    height:100%;
+}
+.ill-list-item .switch switch{
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.userQuotaCtn{
+	position: fixed;
+	top:0;
+	z-index: 10;
+	width: 100%;
+	max-height: 40%;
+	overflow-y: scroll;
+	border-bottom: 10px solid #F6F6F6;
+}
